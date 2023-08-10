@@ -1,8 +1,10 @@
-import { data } from "jquery";
+import checkNumInput from "./checkNumInput";
 
 const forms = () => {
     const forms = document.querySelectorAll('form'),
           input = document.querySelectorAll('input');
+
+    checkNumInput('input[name="user_phone"]');
 
     const message = {
         loading: 'Загрузка...',
@@ -46,6 +48,13 @@ const forms = () => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove();
+                        const windows = document.querySelectorAll('[data-modal]');
+                        windows.forEach(item => {
+                            item.style.display = 'none';
+                            document.body.style.overflow = '';
+                            document.body.style.marginRight = `0px`;
+                        });
+                        console.log('Hi');
                     }, 5000);
                 });
         });

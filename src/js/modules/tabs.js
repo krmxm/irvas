@@ -1,4 +1,4 @@
-const tabs = (parentSelector, tabSelector, contentSelector, activeClass) => {
+const tabs = (parentSelector, tabSelector, contentSelector, activeClass, display = 'block') => {
     const parent = document.querySelector(parentSelector),
           tabs = document.querySelectorAll(tabSelector),
           content = document.querySelectorAll(contentSelector);
@@ -14,9 +14,12 @@ const tabs = (parentSelector, tabSelector, contentSelector, activeClass) => {
     }
 
     function showTabContent(i=0) {
-        content[i].style.display = 'block';
+        content[i].style.display = display;
         tabs[i].classList.add(activeClass);
     }
+
+    hideTabContent();
+    showTabContent();
 
     parent.addEventListener('click', (e) => {
        const target = e.target;
