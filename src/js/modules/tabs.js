@@ -29,7 +29,6 @@ const tabs = (parentSelector, tabSelector, contentSelector, activeClass, display
             if(item === target || item === target.parentNode) {
                 hideTabContent();
                 showTabContent(i);
-                console.log(item);
             }
         });
        }

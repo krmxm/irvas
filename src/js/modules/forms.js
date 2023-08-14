@@ -1,6 +1,6 @@
 import checkNumInput from "./checkNumInput";
 
-const forms = () => {
+const forms = (state) => {
     const forms = document.querySelectorAll('form'),
           input = document.querySelectorAll('input');
 
@@ -37,6 +37,11 @@ const forms = () => {
             item.appendChild(statusMessage);
 
             const formData = new FormData (item);
+            if(item.getAttribute('data-calc') === 'end') {
+                for(let key in state){
+                    formData.append(key, state[key]);
+                }
+            }
 
             postData('assets/server.php', formData)
                 .then(res => {
@@ -54,7 +59,6 @@ const forms = () => {
                             document.body.style.overflow = '';
                             document.body.style.marginRight = `0px`;
                         });
-                        console.log('Hi');
                     }, 5000);
                 });
         });
